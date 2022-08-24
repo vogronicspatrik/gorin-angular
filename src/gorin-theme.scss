@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$gorin-theme-primary: mat-palette($mat-yellow);
+$gorin-theme-accent: mat-palette($mat-amber,A200,A100, A400);
+$gorin-theme-warn: mat-palette($mat-red);
+
+
+$gorin-theme: mat-light-theme($gorin-theme-primary,$gorin-theme-accent, $gorin-theme-warn);
+
+@include angular-material-theme($gorin-theme);

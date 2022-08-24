@@ -1,0 +1,61 @@
+
+
+<div>
+    <a mat-mini-fab routerLink="/members/create" color="accent">
+      Új tag
+    </a>
+</div>
+
+<div class="container" style="margin-left: 20px; margin-right: 20px;">
+  <mat-card>
+
+    <mat-form-field>
+      <input (keyup)="applyFilter($any($event.target).value)" matInput placeholder="Filter">
+    </mat-form-field>
+
+
+    <table style="width: 100%;" mat-table [dataSource]="dataSource" matSort>
+      <!-- <ng-container matColumnDef="title">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
+        <mat-cell *matCellDef="let book"><a mat-button (click)="click()">{{book.title}}</a></mat-cell>
+      </ng-container> -->
+
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell mat-sort-header mat-header-cell *matHeaderCellDef> Keresztnév</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let member"> {{member.firstName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell mat-sort-header mat-header-cell *matHeaderCellDef> Vezetéknév</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let member"> {{member.lastName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateOfBirth">
+        <mat-header-cell mat-sort-header mat-header-cell *matHeaderCellDef> Születési év</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let member"> {{member.dateOfBirth}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="level">
+        <mat-header-cell mat-sort-header mat-header-cell *matHeaderCellDef> Szint</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let member"> {{member.level}} </mat-cell>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="actions">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let train">
+          <a (click)="onEditClicked(train)" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a (click)="onDeleteClicked(train)" mat-icon-button>
+            <mat-icon color="warn">delete</mat-icon>
+          </a>
+        </mat-cell>
+      </ng-container> -->
+
+      <mat-header-row mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+      <mat-row mat-row *matRowDef="let row; columns:displayColumns;"></mat-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>
